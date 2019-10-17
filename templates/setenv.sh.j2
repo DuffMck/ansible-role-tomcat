@@ -16,6 +16,8 @@ JAVA_OPTS="-Xms{{ instance.xms }} ${JAVA_OPTS}"
 JAVA_OPTS="-Xms{{ tomcat_xms }} ${JAVA_OPTS}"
 {% endif %}
 
-{% if instance.custom_java_opts is defined %}
-JAVA_OPTS="-D{{ instance.custom_java_opts.name }}={{ instance.custom_java_opts.value }} ${JAVA_OPTS}"
+{% if custom_java_opts is defined %}
+    {% for opt in custom_java_opts %}
+JAVA_OPTS="-D{{ opt.name }}={{ opt.value }} ${JAVA_OPTS}"
+    {% endfor %}
 {% endif %}

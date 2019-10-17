@@ -56,7 +56,7 @@
     src: setenv.sh.j2
     dest: "{{ tomcat_directory }}/{{ instance.name }}/bin/setenv.sh"
   when:
-    - instance.java_opts is defined
+    - instance.java_opts is defined 
   notify:
     - restart tomcat instance
 
