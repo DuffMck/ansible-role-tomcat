@@ -66,8 +66,10 @@
   vars:
     service_list:
       - name: "{{ instance.name | default(tomcat_name) }}"
+        type: forking
         description: "{{ instance.name | default(tomcat_name) }}"
-        start_command: "{{ tomcat_directory }}/{{ instance.name | default(tomcat_directory) }}/bin/catalina.sh run"
+        start_command: "{{ tomcat_directory }}/{{ instance.name | default(tomcat_directory) }}/bin/catalina.sh start"
+        stop_command: "{{ tomcat_directory }}/{{ instance.name | default(tomcat_directory) }}/bin/catalina.sh stop"
         user_name: "{{ instance.user | default(tomcat_user) }}"
         group_name: "{{ instance.group | default(tomcat_group) }}"
 
